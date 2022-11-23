@@ -9,21 +9,31 @@ form {
   width: 30%;
 }
 
-label {
+.formControl{
+  margin-bottom: 2rem;
+}
+
+.block {
   display: block;
   margin-bottom: 0.5rem;
 }
 
-input {
+.input {
   padding: 1.5rem 1rem;
   border: none;
   outline: none;
   border-radius: 10px;
   width: 100%;
   box-shadow: 0px 10px 50px -14px rgba(0,0,0,0.1);
-  margin-bottom: 1.5rem;
 }
 
 input:focus{
   border: 2px solid #7dd3fc;
+}
+
+input + label {
+  font-weight: bold;
+  display: inline-flex;
+  margin-right: 20px;
+  margin-left: 5px;
 }

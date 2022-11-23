@@ -1,8 +1,8 @@
 const Input = ({name,label,type="text"}) => {
   return (
-    <div>
-      <label>{label} :</label>
-      <input type={type} name={name}/>
+    <div className="formControl">
+      <label className="block">{label} :</label>
+      <input className="input" type={type} name={name}/>
     </div>
   );
 };
