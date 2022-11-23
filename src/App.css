@@ -18,7 +18,7 @@ form {
   margin-bottom: 0.5rem;
 }
 
-.input {
+.input , select{
   padding: 1.5rem 1rem;
   border: none;
   outline: none;
