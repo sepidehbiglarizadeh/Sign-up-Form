@@ -1,3 +1,4 @@
+import CheckBox from "../Common/CheckBox";
 import Input from "../Common/Input";
 import RadioInput from "../Common/RadioInput";
 import Select from "../Common/Select";
@@ -14,6 +15,12 @@ const selectOptions = [
   { label: "United Kingdom", value: "UK" },
 ];
 
+const checkBoxOptions = [
+  { label: "React.js", value: "React.js" },
+  { label: "Vue.js", value: "Vue.js" },
+  { label: "Next.js", value: "Next.js" },
+];
+
 const SignUpForm = () => {
   return (
     <form>
@@ -27,7 +34,8 @@ const SignUpForm = () => {
         type="password"
       />
       <RadioInput radioOptions={radioOptions} name="gender" />
-     <Select selectOptions={selectOptions} name="nationality" />
+      <Select selectOptions={selectOptions} name="nationality" />
+      <CheckBox checkBoxOptions={checkBoxOptions} name="intrests" />
     </form>
   );
 };
