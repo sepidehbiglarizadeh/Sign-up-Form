@@ -2,6 +2,7 @@ import CheckBox from "../Common/CheckBox";
 import Input from "../Common/Input";
 import RadioInput from "../Common/RadioInput";
 import Select from "../Common/Select";
+import TermsCheckBox from "../Common/TermsCheckBox";
 
 const radioOptions = [
   { label: "Male", value: 0 },
@@ -36,6 +37,8 @@ const SignUpForm = () => {
       <RadioInput radioOptions={radioOptions} name="gender" />
       <Select selectOptions={selectOptions} name="nationality" />
       <CheckBox checkBoxOptions={checkBoxOptions} name="intrests" />
+      <TermsCheckBox name="terms" />
+      <button className="submitBtn">Submit</button>
     </form>
   );
 };
