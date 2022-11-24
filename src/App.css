@@ -55,3 +55,8 @@ input + label {
   color:red;
   margin-top: 0.2rem;
 }
+
+.disable{
+  opacity: 0.5;
+  cursor: auto;
+}

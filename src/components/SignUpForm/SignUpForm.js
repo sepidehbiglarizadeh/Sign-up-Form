@@ -82,21 +82,22 @@ const SignUpForm = () => {
   const formik = useFormik({
     initialValues: formValues || initialValues,
     onSubmit,
-    enableReinitialize: true,
     validationSchema,
+    validateOnMount: true,
+    enableReinitialize: true,
   });
 
-  useEffect(() => {
-    const getSavedUserValues = async () => {
-      try {
-        const { data } = await getOneUserService();
-        setFormValues(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getSavedUserValues();
-  }, []);
+  // useEffect(() => {
+  //   const getSavedUserValues = async () => {
+  //     try {
+  //       const { data } = await getOneUserService();
+  //       setFormValues(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getSavedUserValues();
+  // }, []);
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -122,7 +123,7 @@ const SignUpForm = () => {
         name="intrests"
       />
       <TermsCheckBox formik={formik} name="terms" />
-      <button className="submitBtn">Submit</button>
+      <button className={`submitBtn ${formik.isValid ? "" :"disable"}`} disabled={!formik.isValid} >Submit</button>
     </form>
   );
 };
