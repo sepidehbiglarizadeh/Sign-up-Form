@@ -87,17 +87,17 @@ const SignUpForm = () => {
     enableReinitialize: true,
   });
 
-  // useEffect(() => {
-  //   const getSavedUserValues = async () => {
-  //     try {
-  //       const { data } = await getOneUserService();
-  //       setFormValues(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getSavedUserValues();
-  // }, []);
+  useEffect(() => {
+    const getSavedUserValues = async () => {
+      try {
+        const { data } = await getOneUserService();
+        setFormValues(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSavedUserValues();
+  }, []);
 
   return (
     <form onSubmit={formik.handleSubmit}>
