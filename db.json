@@ -5,7 +5,7 @@
       "email": "test@gmail.com",
       "phoneNumber": "09120000000",
       "password": "Test-123",
-      "passwordConfirm": "Test-123",
+      "passwordConfirm": "Test123-123",
       "gender": "1",
       "nationality": "GER",
       "intrests": [

@@ -11,6 +11,7 @@ const RadioInput = ({ formik, radioOptions, name }) => {
             type="radio"
             value={item.value}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             checked={formik.values[name] === item.value}
           />
           <label className="radioLablel" htmlFor={item.value}>
@@ -18,6 +19,9 @@ const RadioInput = ({ formik, radioOptions, name }) => {
           </label>
         </Fragment>
       ))}
+      {formik.errors[name] && formik.touched[name] && (
+        <div className="error">{formik.errors[name]}</div>
+      )}
     </div>
   );
 };

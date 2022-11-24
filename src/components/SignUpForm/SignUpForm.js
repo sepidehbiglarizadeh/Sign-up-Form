@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import addNewUserService from "../../services/addNewUserService";

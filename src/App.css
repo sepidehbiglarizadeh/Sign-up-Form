@@ -50,3 +50,8 @@ input + label {
   cursor: pointer;
   margin-bottom: 5rem;
 }
+
+.error{
+  color:red;
+  margin-top: 0.2rem;
+}
