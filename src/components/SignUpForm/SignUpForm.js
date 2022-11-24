@@ -8,6 +8,7 @@ import Input from "../Common/Input";
 import RadioInput from "../Common/RadioInput";
 import Select from "../Common/Select";
 import TermsCheckBox from "../Common/TermsCheckBox";
+import * as Yup from "yup";
 
 const radioOptions = [
   { label: "Male", value: "0" },
@@ -39,6 +40,35 @@ const initialValues = {
   terms: false,
 };
 
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .required("Name is Required")
+    .min(6, "Name length is not valid"),
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is Required"),
+  phoneNumber: Yup.string()
+    .required("Phone Number is required")
+    .matches(/^[0-9]{11}$/, "Invalid Phone Number")
+    .nullable(),
+  password: Yup.string()
+    .required("Password is required")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    ),
+  passwordConfirm: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    "Passwords must match"
+  ),
+  gender: Yup.string().required("Select Gender"),
+  nationality: Yup.string().required("Select Nationality"),
+  intrests: Yup.array().min(1).required("At least select one experties"),
+  terms: Yup.boolean()
+    .required("Must Accept Terms and Condition")
+    .oneOf([true], "Must Accept Terms and Condition"),
+});
+
 const SignUpForm = () => {
   const [formValues, setFormValues] = useState(null);
 
@@ -54,6 +84,7 @@ const SignUpForm = () => {
     initialValues: formValues || initialValues,
     onSubmit,
     enableReinitialize: true,
+    validationSchema,
   });
 
   useEffect(() => {
@@ -67,8 +98,6 @@ const SignUpForm = () => {
     };
     getSavedUserValues();
   }, []);
-
-  console.log(formik.values);
 
   return (
     <form onSubmit={formik.handleSubmit}>
