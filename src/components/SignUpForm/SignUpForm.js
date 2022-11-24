@@ -1,4 +1,8 @@
+import axios from "axios";
 import { useFormik } from "formik";
+import { useEffect, useState } from "react";
+import addNewUserService from "../../services/addNewUserService";
+import getOneUserService from "../../services/getOneUserService";
 import CheckBox from "../Common/CheckBox";
 import Input from "../Common/Input";
 import RadioInput from "../Common/RadioInput";
@@ -6,8 +10,8 @@ import Select from "../Common/Select";
 import TermsCheckBox from "../Common/TermsCheckBox";
 
 const radioOptions = [
-  { label: "Male", value: 0 },
-  { label: "Female", value: 1 },
+  { label: "Male", value: "0" },
+  { label: "Female", value: "1" },
 ];
 
 const selectOptions = [
@@ -36,14 +40,38 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
+  const [formValues, setFormValues] = useState(null);
+
+  const onSubmit = async (values) => {
+    try {
+      await addNewUserService(values);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const formik = useFormik({
-    initialValues,
+    initialValues: formValues || initialValues,
+    onSubmit,
+    enableReinitialize: true,
   });
+
+  useEffect(() => {
+    const getSavedUserValues = async () => {
+      try {
+        const { data } = await getOneUserService();
+        setFormValues(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSavedUserValues();
+  }, []);
 
   console.log(formik.values);
 
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <Input formik={formik} name="name" label="Name" />
       <Input formik={formik} name="email" label="Email" type="email" />
       <Input formik={formik} name="phoneNumber" label="Phone Number" />

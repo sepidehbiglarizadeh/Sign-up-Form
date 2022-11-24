@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "name": "test",
+      "email": "test@gmail.com",
+      "phoneNumber": "09120000000",
+      "password": "Test-123",
+      "passwordConfirm": "Test-123",
+      "gender": "1",
+      "nationality": "GER",
+      "intrests": [
+        "React.js"
+      ],
+      "terms": true,
+      "id": 1
+    }
+  ]
+}
