@@ -1,3 +1,4 @@
+import { useFormik } from "formik";
 import CheckBox from "../Common/CheckBox";
 import Input from "../Common/Input";
 import RadioInput from "../Common/RadioInput";
@@ -22,22 +23,49 @@ const checkBoxOptions = [
   { label: "Next.js", value: "Next.js" },
 ];
 
+const initialValues = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  password: "",
+  passwordConfirm: "",
+  gender: "",
+  nationality: "",
+  intrests: [],
+  terms: false,
+};
+
 const SignUpForm = () => {
+  const formik = useFormik({
+    initialValues,
+  });
+
+  console.log(formik.values);
+
   return (
     <form>
-      <Input name="name" label="Name" />
-      <Input name="email" label="Email" type="email" />
-      <Input name="phoneNumber" label="Phone Number" />
-      <Input name="password" label="Password" type="password" />
+      <Input formik={formik} name="name" label="Name" />
+      <Input formik={formik} name="email" label="Email" type="email" />
+      <Input formik={formik} name="phoneNumber" label="Phone Number" />
+      <Input formik={formik} name="password" label="Password" type="password" />
       <Input
-        name="passwordConfirmation"
+        formik={formik}
+        name="passwordConfirm"
         label="Password Confirmation"
         type="password"
       />
-      <RadioInput radioOptions={radioOptions} name="gender" />
-      <Select selectOptions={selectOptions} name="nationality" />
-      <CheckBox checkBoxOptions={checkBoxOptions} name="intrests" />
-      <TermsCheckBox name="terms" />
+      <RadioInput formik={formik} radioOptions={radioOptions} name="gender" />
+      <Select
+        formik={formik}
+        selectOptions={selectOptions}
+        name="nationality"
+      />
+      <CheckBox
+        formik={formik}
+        checkBoxOptions={checkBoxOptions}
+        name="intrests"
+      />
+      <TermsCheckBox formik={formik} name="terms" />
       <button className="submitBtn">Submit</button>
     </form>
   );

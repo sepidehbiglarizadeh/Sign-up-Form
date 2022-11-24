@@ -1,7 +1,7 @@
-const TermsCheckBox = () => {
+const TermsCheckBox = ({formik,name}) => {
   return (
     <div className="formControl">
-      <input type="checkbox" value={true}/>
+      <input type="checkbox" name={name} value={true} onChange={formik.handleChange}/>
       <label>Terms and Conditions</label>
     </div>
   );
