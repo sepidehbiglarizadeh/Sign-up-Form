@@ -1,7 +1,7 @@
 const Select = ({ formik, selectOptions, name }) => {
   return (
     <div className="formControl">
-      <select name={name} onChange={formik.handleChange} onBlur={formik.handleBlur}>
+      <select name={name} {...formik.getFieldProps(name)}>
         {selectOptions.map((item) => (
           <option key={item.value} value={item.value}>
             {item.label}

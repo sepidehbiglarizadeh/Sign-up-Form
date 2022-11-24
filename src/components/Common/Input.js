@@ -6,9 +6,7 @@ const Input = ({ formik, name, label, type = "text" }) => {
         className="input"
         type={type}
         name={name}
-        value={formik.values[name]}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        {...formik.getFieldProps(name)}
       />
       {formik.errors[name] && formik.touched[name] && (
         <div className="error">{formik.errors[name]}</div>
